@@ -38,17 +38,17 @@ public class FBController : MonoBehaviour {
 	}
 	public GameObject DialogUsername;
 	public GameObject DiagLoggedIn;
-	public GameObject DiagLoggedOut;
+//	public GameObject DiagLoggedOut;
 	void DealWithFBMenus(bool isLoggedIn){
 		if (isLoggedIn) {
 			DiagLoggedIn.SetActive (false);
-			DiagLoggedOut.SetActive (true);
+//			DiagLoggedOut.SetActive (true);
 			FB.API ("/me?fields=first_name", HttpMethod.GET, DisplayUsername);
 			//			FB.API ("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
 //			FB.API ("/me/picture", HttpMethod.GET, DisplayProfilePic);
 		} else {
 			DiagLoggedIn.SetActive (true);
-			DiagLoggedOut.SetActive (false);
+//			DiagLoggedOut.SetActive (false);
 		}
 	}
 	public InteroServerConnection interoServerConnection;
@@ -72,7 +72,7 @@ public class FBController : MonoBehaviour {
 			//			fbImage.
 		}
 	}
-
+	/*
 	void DisplayProfilePic(IGraphResult res){
 		if (res.Texture==null){// && res.Error.Length>1) {
 			Debug.Log (res.Error);
@@ -84,5 +84,5 @@ public class FBController : MonoBehaviour {
 			//			fbImage.
 		}
 	}
-
+*/
 }

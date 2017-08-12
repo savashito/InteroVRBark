@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateWOGController : MonoBehaviour {
-
+	public InteroServerConnection interoServer;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +16,7 @@ public class CreateWOGController : MonoBehaviour {
 	}
 	public void OnOk(){
 		WOGModel cWOGModel = getCreateWOGModel ();
-
+		interoServer.CreateTeamWorkouts (cWOGModel);
 	}
 }
 

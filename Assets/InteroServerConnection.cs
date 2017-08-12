@@ -58,17 +58,19 @@ public class InteroServerConnection : MonoBehaviour {
 		// check insert log correct id, or is hardcoded, configurationHUD
 		hasConnected = true;
 		print (pmChannel+"Connected");
-		GetTestRower ();
+//		GetTestRower ();
 //		GetTeamWorkouts ();
 	}
 	void onRowers(SocketIOEvent e){
+		print ("OnROwers");
 		print (pmChannel+" OnRowers "+e.data);
 		configHUD.setRower (e.data);
 		// set socket of rower
 		socket.Emit("RowerEvent",configHUD.getRower());
 
 		// test create workout
-
+//		WOGModel cWOGModel = new WOGModel (true,"land","morning");
+//		CreateTeamWorkouts (cWOGModel);
 		// Test Join Team
 		//		JoinTeam(0);
 		/*
