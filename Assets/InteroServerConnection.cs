@@ -64,7 +64,14 @@ public class InteroServerConnection : MonoBehaviour {
 	void onRowers(SocketIOEvent e){
 		print ("OnROwers");
 		print (pmChannel+" OnRowers "+e.data);
-		configHUD.setRower (e.data);
+
+		if (configHUD.setRower (e.data)) {
+			// show configuration page
+			canvasController.DisplaySelectTeamView();
+		} else {
+			// show main menu
+			canvasController.DisplayMainMenuView();
+		}
 		// set socket of rower
 		socket.Emit("RowerEvent",configHUD.getRower());
 
@@ -163,7 +170,7 @@ public class InteroServerConnection : MonoBehaviour {
 		socket.Emit ("UserStaticEvent", obj);//e.ToJSONEvent(configHUD.getRower()));
 		print("Socket just emited");
 	}
-
+	/*
 	// Get Rowers
 	void GetTestRower (){
 		JSONObject obj = new JSONObject();

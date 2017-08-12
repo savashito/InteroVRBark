@@ -6,16 +6,21 @@ using UnityEngine.UI;
 
 public class FBController : MonoBehaviour {
 	public Image fbImage;
+	CanvasController canvasController;
 	// Use this for initialization
+	void Start(){
+		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
+	}
 	void Awake () {
 		FB.Init (SetInit, OnHideUnity);
 	}
 	void SetInit(){
+		/*
 		if (FB.IsLoggedIn) {
 			Debug.Log ("FB is logged in");
 		} else {
 			Debug.Log ("FB is Not! logged in");
-		}
+		}*/
 		DealWithFBMenus (FB.IsLoggedIn);
 	}
 	void OnHideUnity(bool isGameShow){
@@ -41,14 +46,12 @@ public class FBController : MonoBehaviour {
 //	public GameObject DiagLoggedOut;
 	void DealWithFBMenus(bool isLoggedIn){
 		if (isLoggedIn) {
-			DiagLoggedIn.SetActive (false);
-//			DiagLoggedOut.SetActive (true);
+//			canvasController.DisplayMainMenuView ();
 			FB.API ("/me?fields=first_name", HttpMethod.GET, DisplayUsername);
 			//			FB.API ("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
 //			FB.API ("/me/picture", HttpMethod.GET, DisplayProfilePic);
 		} else {
-			DiagLoggedIn.SetActive (true);
-//			DiagLoggedOut.SetActive (false);
+//			canvasController.DisplayFBLogingView();
 		}
 	}
 	public InteroServerConnection interoServerConnection;
@@ -67,7 +70,7 @@ public class FBController : MonoBehaviour {
 			}*/
 			Debug.Log (res.ResultDictionary["id"]); 
 			Debug.Log (res.ResultDictionary ["first_name"]);
-			print (interoServerConnection);
+//			print (interoServerConnection);
 			interoServerConnection.LoginUser (res.ResultDictionary ["id"].ToStringNullOk(), res.ResultDictionary ["first_name"].ToStringNullOk());
 			//			fbImage.
 		}

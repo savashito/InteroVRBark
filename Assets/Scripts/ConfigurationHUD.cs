@@ -56,7 +56,9 @@ public class ConfigurationHUD : MonoBehaviour {
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 //		QualitySettings.antiAliasing = 8;
 	}
-	public void setRower(JSONObject jObj){
+	// returns true if the rower was newly created.
+	// False if the rower already existed
+	public bool setRower(JSONObject jObj){
 		string id="",team ="";
 		rowerJSON = new JSONObject();
 		jObj.GetField(ref id,"_id");
@@ -65,6 +67,7 @@ public class ConfigurationHUD : MonoBehaviour {
 		rowerJSON.AddField("rowerId",id);
 		rowerJSON.AddField("lane",getPMChannel());
 		rowerJSON.AddField("team",team);
+		return (team.Length<3);
 	}
 	public JSONObject getRower(){
 		// if null, send test obj

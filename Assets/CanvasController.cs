@@ -35,6 +35,8 @@ public class CanvasController : MonoBehaviour {
 	}
 	public void DisplayMainMenuView(){
 		HideAllViews ();
+		// Check if its the first time logging in.
+
 		MainMenuView.SetActive (true);
 	}
 }

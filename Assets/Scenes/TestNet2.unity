@@ -532,7 +532,6 @@ MonoBehaviour:
   fbImage: {fileID: 0}
   DialogUsername: {fileID: 1381499949}
   DiagLoggedIn: {fileID: 1647968140}
-  DiagLoggedOut: {fileID: 0}
   interoServerConnection: {fileID: 716543580}
 --- !u!4 &448301043
 Transform:
@@ -638,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &639921084
 Transform:
   m_ObjectHideFlags: 0
@@ -666,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57278980e90a4f0e9f71993be7654d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interoServer: {fileID: 0}
+  interoServer: {fileID: 716543580}
 --- !u!1 &664956985
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &685830221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1055,7 +1054,6 @@ MonoBehaviour:
   fbImage: {fileID: 0}
   DialogUsername: {fileID: 1381499949}
   DiagLoggedIn: {fileID: 1330731031}
-  DiagLoggedOut: {fileID: 1571154963}
   interoServerConnection: {fileID: 716543580}
 --- !u!1 &900152435
 GameObject:
@@ -2149,7 +2147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1481479428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2180,10 +2178,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1481479427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40e8ab80aec46480ba8af82c0b9abc39, type: 3}
+  m_Script: {fileID: 11500000, guid: 77ec7995ed95d49e18fea45f569b0bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interoServer: {fileID: 716543580}
+  interoServer: {fileID: 0}
 --- !u!1 &1484030121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,7 +3304,6 @@ MonoBehaviour:
   fbImage: {fileID: 0}
   DialogUsername: {fileID: 1381499949}
   DiagLoggedIn: {fileID: 1057292456}
-  DiagLoggedOut: {fileID: 1202269292}
   interoServerConnection: {fileID: 716543580}
 --- !u!1 &1731951567 stripped
 GameObject:
