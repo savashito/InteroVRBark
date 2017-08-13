@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 60d6d6ec2a41e49e593a4b49d9899154
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/MainMenu.unity
     guid: 7c38a8c9adc9d5c4b869612e4033ead8
-  - enabled: 1
+  - enabled: 0
     path: Assets/FacebookSDK/Examples/LogView.unity
     guid: c07ff0bf6bea74c2eb681ac0cae44265
+  - enabled: 1
+    path: Assets/Scenes/LoginScreenUI.unity
+    guid: b61d92de4145648ea8f4dcc511fbd2ee
