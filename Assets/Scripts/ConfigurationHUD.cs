@@ -69,6 +69,11 @@ public class ConfigurationHUD : MonoBehaviour {
 		rowerJSON.AddField("team",team);
 		return (team.Length<3);
 	}
+	public string getTeam(){
+		string team="";
+		rowerJSON.GetField(ref team,"team");
+		return team;
+	}
 	public JSONObject getRower(){
 		// if null, send test obj
 		if (rowerJSON == null) {

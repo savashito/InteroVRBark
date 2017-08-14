@@ -8,12 +8,16 @@ public class CanvasController : MonoBehaviour {
 	GameObject FBLogingView;
 	GameObject MainMenuView;
 	GameObject CreateWOGView;
-
+	GameObject canvas;
 	void Start(){
 		SelectTeamView = transform.Find ("SelectTeam").gameObject;
 		FBLogingView = transform.Find ("FBLoging").gameObject;
 		CreateWOGView = transform.Find ("CreateWOG").gameObject;
 		MainMenuView = transform.Find ("MainMenu").gameObject;
+	}
+	public void Hide(){
+		gameObject.SetActive (false);
+//		transform.SetA
 	}
 	void HideAllViews(){
 		SelectTeamView.SetActive (false);
@@ -38,5 +42,8 @@ public class CanvasController : MonoBehaviour {
 		// Check if its the first time logging in.
 
 		MainMenuView.SetActive (true);
+	}
+	public void SetRower(JSONObject jRower){
+
 	}
 }
