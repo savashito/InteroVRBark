@@ -1843,8 +1843,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4629605476566998}
-  - component: {fileID: 114133265530717720}
-  - component: {fileID: 114965801769015368}
   - component: {fileID: 114641641057517226}
   - component: {fileID: 114484433413657824}
   m_Layer: 0
@@ -12432,38 +12430,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: m
---- !u!114 &114133265530717720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259307728984074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 207
-    i1: 17
-    i2: 164
-    i3: 199
-    i4: 56
-    i5: 48
-    i6: 68
-    i7: 170
-    i8: 59
-    i9: 158
-    i10: 191
-    i11: 58
-    i12: 225
-    i13: 216
-    i14: 21
-    i15: 118
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114135429393222934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12992,9 +12958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482c8852db93745caa2b65e3566cdfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPlayer: 1
   myGhost: {fileID: 1976145960362736}
   myPlayer: {fileID: 1314672271390274}
+  camController: {fileID: 114992705180472478}
 --- !u!114 &114683946588942552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13437,27 +13403,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: m
---- !u!114 &114965801769015368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259307728984074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114981465591919642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13485,10 +13430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9043e31b1c2400cb1cf97ac4c4028e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VRcam: {fileID: 4844398489268912}
-  nFrames: 80
-  fpv: {fileID: 0}
-  tpv: {fileID: 0}
 --- !u!124 &124269034596128492
 Behaviour:
   m_ObjectHideFlags: 1

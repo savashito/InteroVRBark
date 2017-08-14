@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.VR;
 using UnityStandardAssets.Water;
-public class PlayerNetwork: NetworkBehaviour {
+public class PlayerNetwork: MonoBehaviour {
 
 //	public GameObject Gvr;
-	public bool localPlayer;
+//	public bool localPlayer;
 	public GameObject myGhost;
 	public GameObject myPlayer;
+	public CameraController camController;
 	private ConfigurationHUD confHUD;
+
 
 	// Use this for initialization
 //	void Start () {
@@ -31,12 +33,14 @@ public class PlayerNetwork: NetworkBehaviour {
 		Camera[] camaras;
 		AudioListener[] audios;
 		print("Player NetworkStart");
+		/*
 		if(confHUD.isOfflineGame)
 			localPlayer = true;
 		else
-			localPlayer = isLocalPlayer;
+			localPlayer = isLocalPlayer;*/
 //		GameObject.Find("Net Manager").GetComponent<>().set
 //		localPlayer = isLocalPlayer;
+		/*
 		print ("localPlayer " + localPlayer);
 		if (!localPlayer) {
 
@@ -50,7 +54,7 @@ public class PlayerNetwork: NetworkBehaviour {
 				audio.enabled = false;
 			}
 
-		} else {
+		} else {*/
 			GameObject.Destroy (GameObject.Find ("Camera"));
 			print (myPlayer);
 			myPlayer.transform.rotation = Quaternion.Euler (0f, -90.0f, 0f);
@@ -58,8 +62,10 @@ public class PlayerNetwork: NetworkBehaviour {
 			// .InitVR();;
 
 
-			int lineaDisponible;
-			if(confHUD.isOfflineGame)
+			int lineaDisponible ;
+			lineaDisponible = confHUD.getLane();
+		/*	
+		if(confHUD.isOfflineGame)
 				lineaDisponible = confHUD.getLane();//GameObject.Find ("Lane").GetComponent<laneManager> ().lineaDisponible;
 			else 
 				lineaDisponible = GameObject.Find ("Lane").GetComponent<laneManager> ().lineaDisponible;
@@ -112,9 +118,11 @@ public class PlayerNetwork: NetworkBehaviour {
 			InitRowingScene (fpv, myPlayer);
 //			myPlayer.transform.FindChild ("3D Canvas").gameObject.SetActive (true);
 			// new stuffy 
-			print ("Iniciando GVR");
+			print ("Iniciando GVR "+confHUD.isVROn ());
+			camController.SetVR (confHUD.isVROn ());
+			/*
 			if(confHUD.isVROn ()){
-				enableVR ();
+			camController.SeenableVR ();
 //				GameObject.Instantiate (Gvr);
 
 //				GvrViewer.Instance.VRModeEnabled = true;
@@ -123,31 +131,33 @@ public class PlayerNetwork: NetworkBehaviour {
 			}else{
 				disableVR();
 			}
+			*/
 			// enable wifi
+		/*
 			if (confHUD.isWIFIOn ()) {
 				GameObject g =GameObject.Find ("RowingVRGame/ConnectionLogic");//.SetActive (true);
 				print("WIFI");
 				print(g);
-			}
+			}*/
 
-		}
+//		}
 	}
 
-	public void enableVR(){
-		VRSettings.enabled = true;
-		//		VRDevice.
-		//		VRDevice.
-		//		GvrControllerInput g;
-		//		g.re
-		//		UnityEditor.PlayerSettings.virtualRealitySupported = true;
-		print ("VR on");
-	}
-	public void disableVR(){
-		//		UnityEditor.PlayerSettings.virtualRealitySupported = false;
-		VRSettings.enabled = false;
-		Camera.main.ResetAspect ();
-		print ("VR off");
-	}
+//	public void enableVR(){
+//		VRSettings.enabled = true;
+//		//		VRDevice.
+//		//		VRDevice.
+//		//		GvrControllerInput g;
+//		//		g.re
+//		//		UnityEditor.PlayerSettings.virtualRealitySupported = true;
+//		print ("VR on");
+//	}
+//	public void disableVR(){
+//		//		UnityEditor.PlayerSettings.virtualRealitySupported = false;
+//		VRSettings.enabled = false;
+//		Camera.main.ResetAspect ();
+//		print ("VR off");
+//	}
 
 	public PlayerNetwork InitRowingScene(bool fpv,GameObject player){
 		//		GameObject player = GameObject.Instantiate (playerPrefab);

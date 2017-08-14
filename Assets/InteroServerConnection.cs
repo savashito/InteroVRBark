@@ -10,6 +10,7 @@ public class InteroServerConnection : MonoBehaviour {
 	public int pmChannel = 0;
 	public TestBLE testBLE = null;
 	public CanvasController canvasController = null;
+	public RowSessionManager rowSessionManager;
 	// Use this for initialization
 	void Start () {
 		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
@@ -100,6 +101,12 @@ public class InteroServerConnection : MonoBehaviour {
 			print ("listWorkoutsResponse" + p.obj);
 			if (p.obj.Count > 0) {
 				print ("joing WOG");
+				JSONObject wog = p.obj [0];
+				string s="";
+				wog.GetField (ref s,"_id");
+				JoinWog (s);
+				rowSessionManager.InitRowingSession ();
+				canvasController.Hide();
 				//				o [0];
 			} else {
 				print ("Take to create WOG");
@@ -158,6 +165,15 @@ public class InteroServerConnection : MonoBehaviour {
 
 	public void SendErgData(ErgData e){
 		socket.Emit("RowerEvent",e.ToJSONEvent(configHUD.getRower()));
+	}
+	public void JoinWog(string wogId){
+		print ("JoinWog");
+		// The rower from configHUD should get updated , by getting the obj reference
+		JSONObject rower = configHUD.getRower ();
+		rower.AddField("data",wogId);
+		rower.AddField("event","joinWOG");
+		socket.Emit("RowerEvent",rower);
+		//		obj.AddField("rowerId",id);
 	}
 	public void JoinTeam(string id){
 		print ("JoinTeam");

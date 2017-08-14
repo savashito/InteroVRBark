@@ -240,6 +240,7 @@ PlayerSettings:
   - m_BuildTarget: iOS
     m_Enabled: 1
     m_Devices:
+    - None
     - cardboard
   openGLRequireES31: 0
   openGLRequireES31AEP: 0

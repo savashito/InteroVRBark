@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour {
 	public InteroServerConnection interoServer;
-	public CanvasController canvasController = null;
+	CanvasController canvasController = null;
+	public RowSessionManager rowSessionManager;
 	// Use this for initialization
 	void Start () {
 		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
@@ -25,5 +26,6 @@ public class MainMenuController : MonoBehaviour {
 	public void SoloRow(){
 		// just make me row by my own
 		canvasController.Hide ();
+		rowSessionManager.InitRowingSession ();
 	}
 }

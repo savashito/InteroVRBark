@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuntManager : MonoBehaviour {
+public class RowSessionManager : MonoBehaviour {
 	private ConfigurationHUD confHUD; 
 	public GameObject playerPrefab;
 	// Use this for initialization
@@ -14,7 +14,10 @@ public class CuntManager : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void CreateLocalSolo(){
+	public void InitRowingSession(){
+		CreateSoloSession ();
+	}
+	public void CreateSoloSession(){
 		print ("CreateLocalSolo");
 		confHUD.isRowingSolo = true;
 		confHUD.isOfflineGame = true;
@@ -24,7 +27,7 @@ public class CuntManager : MonoBehaviour {
 	}
 
 
-	public void CreateLocalDouble(){
+	public void CreateDoubleSession(){
 		confHUD.isRowingSolo = false;
 		confHUD.toggleHideRower.isOn = false;
 		confHUD.isOfflineGame = true;
