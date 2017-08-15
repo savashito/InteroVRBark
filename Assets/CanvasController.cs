@@ -17,6 +17,9 @@ public class CanvasController : MonoBehaviour {
 	GameObject Background;
 	GameObject LoginBackground;
 
+	GameObject Settings;
+	GameObject SideMenu;
+
 	GameObject canvas;
 	void Start(){
 		SelectTeamView = transform.Find ("SelectTeam").gameObject;
@@ -29,7 +32,12 @@ public class CanvasController : MonoBehaviour {
 		RowTeamConfigView = transform.Find ("RowTeamConfig").gameObject;
 		RowRivalConfigView = transform.Find ("RowRivalConfig").gameObject;
 		RowSoloConfigView = transform.Find ("RowSoloConfig").gameObject;
+
+		Settings= transform.Find ("Settings").gameObject;
+		SideMenu= transform.Find ("SideMenu").gameObject;
 		print ("CanvasController.Start RowSoloConfigView" + RowSoloConfigView);
+
+
 //		Image image = gameObject.GetComponent<Image>();
 //		image.sprite = Resources.Load<Sprite> ("UIAssets\\Background1.png");
 	}
@@ -44,6 +52,17 @@ public class CanvasController : MonoBehaviour {
 		MainMenuView.SetActive (false);
 		Background.SetActive(false);
 		LoginBackground.SetActive(false);
+	}
+
+
+	public void DisplaySideMenu(){
+//		HideAllViews ();
+		SideMenu.SetActive(true);
+	}
+	public void DisplaySettings(){
+//		HideAllViews ();
+		Settings.SetActive(true);
+
 	}
 	public void DisplaySelectTeamView(){
 		HideAllViews ();

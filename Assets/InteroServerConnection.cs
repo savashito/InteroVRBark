@@ -52,10 +52,22 @@ public class InteroServerConnection : MonoBehaviour {
 		InteroServerPayload p = new InteroServerPayload (e.data);
 		switch (p.ev) {
 		case "logWorkoutEntryResponse":
+			/*
 			JSONObject o = e.data;
 //			o.GetField (ref rowerId, "rowerId");
 			o.GetField (ref lane, "lane");
 //			JSONObject payload = o.GetField("data");
+			ErgData erg = ErgData.From(p.obj);
+			erg.i = lane;
+//			print ("Placebo" + erg);
+			testBLE.OnErgData (erg);
+			*/
+			break;
+		case "recievedWorkoutEntry":
+			JSONObject o = e.data;
+			//			o.GetField (ref rowerId, "rowerId");
+			o.GetField (ref lane, "lane");
+			//			JSONObject payload = o.GetField("data");
 			ErgData erg = ErgData.From(p.obj);
 			erg.i = lane;
 			print ("Placebo" + erg);
@@ -105,6 +117,7 @@ public class InteroServerConnection : MonoBehaviour {
 				string s="";
 				wog.GetField (ref s,"_id");
 				JoinWog (s);
+				print ("Join wog SUccess");
 				rowSessionManager.InitRowingSession ();
 				canvasController.Hide();
 				//				o [0];
@@ -144,14 +157,18 @@ public class InteroServerConnection : MonoBehaviour {
 	// WORKOUT functions
 	public void GetTeamWorkouts(){
 		JSONObject obj = new JSONObject();
-		obj.AddField("data",configHUD.getRower ());
+		//		obj.AddField("data",configHUD.getRower ());
+		obj.AddField("data",configHUD.getTeam ());
 		obj.AddField("event","listWorkouts");
 		print ("GetTeamWorkouts");
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
 	}
 	public void GetRivalWorkouts(){
 		JSONObject obj = new JSONObject();
-		obj.AddField("data",configHUD.getRower ());
+		JSONObject team = configHUD.getTeam ();
+		notteam
+//		string rivalTeam = "red";
+		obj.AddField("data",team);
 		obj.AddField("event","listWorkouts");
 		print ("GetTeamWorkouts");
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
