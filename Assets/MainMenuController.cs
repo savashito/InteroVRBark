@@ -25,7 +25,8 @@ public class MainMenuController : MonoBehaviour {
 
 	public void SoloRow(){
 		// just make me row by my own
-		canvasController.Hide ();
-		rowSessionManager.InitRowingSession ();
+		canvasController.DisplayRowSoloConfig();
+	//	canvasController.Hide ();
+//		rowSessionManager.InitRowingSession ();
 	}
 }

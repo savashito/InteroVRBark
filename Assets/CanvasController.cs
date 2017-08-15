@@ -9,6 +9,11 @@ public class CanvasController : MonoBehaviour {
 	GameObject FBLogingView;
 	GameObject MainMenuView;
 	GameObject CreateWOGView;
+
+	GameObject RowTeamConfigView;
+	GameObject RowRivalConfigView;
+	GameObject RowSoloConfigView;
+
 	GameObject Background;
 	GameObject LoginBackground;
 
@@ -21,7 +26,10 @@ public class CanvasController : MonoBehaviour {
 		Background = transform.Find ("Background").gameObject;
 		LoginBackground = transform.Find ("LoginBackground").gameObject;
 
-
+		RowTeamConfigView = transform.Find ("RowTeamConfig").gameObject;
+		RowRivalConfigView = transform.Find ("RowRivalConfig").gameObject;
+		RowSoloConfigView = transform.Find ("RowSoloConfig").gameObject;
+		print ("CanvasController.Start RowSoloConfigView" + RowSoloConfigView);
 //		Image image = gameObject.GetComponent<Image>();
 //		image.sprite = Resources.Load<Sprite> ("UIAssets\\Background1.png");
 	}
@@ -41,6 +49,22 @@ public class CanvasController : MonoBehaviour {
 		HideAllViews ();
 		Background.SetActive(true);
 		SelectTeamView.SetActive (true);
+	}
+	public void DisplayRowSoloConfig(){
+		HideAllViews ();
+		Background.SetActive(true);
+		print ("DisplayRowSoloConfig" + RowSoloConfigView);
+		RowSoloConfigView.SetActive (true);
+	}
+	public void DisplayRowRivalConfig(){
+		HideAllViews ();
+		Background.SetActive(true);
+		RowRivalConfigView.SetActive (true);
+	}
+	public void DisplayRowTeamConfig(){
+		HideAllViews ();
+		Background.SetActive(true);
+		RowTeamConfigView.SetActive (true);
 	}
 	public void DisplayFBLogingView(){
 		HideAllViews ();

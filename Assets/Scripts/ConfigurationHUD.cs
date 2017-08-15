@@ -17,7 +17,7 @@ public class ConfigurationHUD : MonoBehaviour {
 //	bool isHideRowerFlag;
 	public bool isOfflineGame = false;
 //	public bool isConstraintDistance; // TODO
-	public Dropdown dropdownEnviroment,dropdownPM3Channel;
+	public Dropdown dropdownEnviroment,dropdownTimeOfDay,dropdownPM3Channel;
 
 	public Material manana,tarde,noche;
 //	RangoSPM[] ranges = new RangoSPM[3];
@@ -110,7 +110,7 @@ public class ConfigurationHUD : MonoBehaviour {
 	}*/
 
 	public Material getSkybox(){
-		switch (dropdownEnviroment.value) {
+		switch (dropdownTimeOfDay.value) {
 		case 0:
 			return manana;
 		case 1:
