@@ -110,7 +110,7 @@ public class InteroServerConnection : MonoBehaviour {
 		switch (p.ev) {
 		// list workout responce	
 		case "listWorkoutsResponse":
-			print ("listWorkoutsResponse" + p.obj);
+			print ("listWorkoutsResponse " + p.obj);
 			if (p.obj.Count > 0) {
 				print ("joing WOG");
 				JSONObject wog = p.obj [0];
@@ -158,19 +158,20 @@ public class InteroServerConnection : MonoBehaviour {
 	public void GetTeamWorkouts(){
 		JSONObject obj = new JSONObject();
 		//		obj.AddField("data",configHUD.getRower ());
-		obj.AddField("data",configHUD.getTeam ());
+		obj.AddField("data",configHUD.getRower ());
 		obj.AddField("event","listWorkouts");
 		print ("GetTeamWorkouts");
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
 	}
 	public void GetRivalWorkouts(){
 		JSONObject obj = new JSONObject();
-		JSONObject team = configHUD.getTeam ();
-		notteam
+		JSONObject teamJSON = new JSONObject();
+		string team = configHUD.getTeam ();
+		teamJSON.AddField("notteam",team);
 //		string rivalTeam = "red";
-		obj.AddField("data",team);
+		obj.AddField("data",teamJSON);
 		obj.AddField("event","listWorkouts");
-		print ("GetTeamWorkouts");
+		print ("GetRivalWorkouts");
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
 	}
 
@@ -205,11 +206,11 @@ public class InteroServerConnection : MonoBehaviour {
 		// 10156192670307119 
 		// Rodrigo
 		JSONObject obj = new JSONObject();
-		print ("LoginUser");
+		print ("LoginUser "+id+" "+name);
 		obj.AddField ("event", "loginFB");
 		obj.AddField ("data", configHUD.setUserFB (id,name));
 		socket.Emit ("UserStaticEvent", obj);//e.ToJSONEvent(configHUD.getRower()));
-		print("Socket just emited");
+		print("Socket UserStaticEvent LoginUser emited");
 	}
 }
 class InteroServerPayload{

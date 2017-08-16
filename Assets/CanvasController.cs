@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour {
 
+	GameObject TopBar;
+
 	GameObject SelectTeamView;
 	GameObject FBLogingView;
 	GameObject MainMenuView;
@@ -20,8 +22,14 @@ public class CanvasController : MonoBehaviour {
 	GameObject Settings;
 	GameObject SideMenu;
 
+	GameObject Sync;
+	GameObject Log;
+	GameObject Coach;
+	GameObject Leader;
+
 	GameObject canvas;
 	void Start(){
+		TopBar  = transform.Find ("TopBar").gameObject;
 		SelectTeamView = transform.Find ("SelectTeam").gameObject;
 		FBLogingView = transform.Find ("FBLoging").gameObject;
 		CreateWOGView = transform.Find ("CreateWOG").gameObject;
@@ -33,8 +41,13 @@ public class CanvasController : MonoBehaviour {
 		RowRivalConfigView = transform.Find ("RowRivalConfig").gameObject;
 		RowSoloConfigView = transform.Find ("RowSoloConfig").gameObject;
 
-		Settings= transform.Find ("Settings").gameObject;
-		SideMenu= transform.Find ("SideMenu").gameObject;
+		Settings = transform.Find ("Settings").gameObject;
+		SideMenu = transform.Find ("SideMenu").gameObject;
+
+		Sync = transform.Find ("Sync").gameObject;
+		Log = transform.Find ("Log").gameObject;
+		Coach = transform.Find ("Coach").gameObject;
+		Leader = transform.Find ("Leader").gameObject;
 		print ("CanvasController.Start RowSoloConfigView" + RowSoloConfigView);
 
 
@@ -45,6 +58,9 @@ public class CanvasController : MonoBehaviour {
 		gameObject.SetActive (false);
 //		transform.SetA
 	}
+	public void HideSideMenu(){
+		SideMenu.SetActive (false);
+	}
 	void HideAllViews(){
 		SelectTeamView.SetActive (false);
 		FBLogingView.SetActive (false);
@@ -52,37 +68,66 @@ public class CanvasController : MonoBehaviour {
 		MainMenuView.SetActive (false);
 		Background.SetActive(false);
 		LoginBackground.SetActive(false);
+		Settings.SetActive (false);
+		SideMenu.SetActive (false);
+		Sync.SetActive (false);
+		Log.SetActive (false);
+		Leader.SetActive (false);
+		Coach.SetActive (false);
 	}
 
 
 	public void DisplaySideMenu(){
 //		HideAllViews ();
+//		TopBar.SetActive(false);
 		SideMenu.SetActive(true);
 	}
 	public void DisplaySettings(){
-//		HideAllViews ();
+		SideMenu.SetActive (false);
 		Settings.SetActive(true);
-
+//		TopBar.SetActive (false);
 	}
+
+	public void DisplaySync(){
+		HideAllViews ();
+		Sync.SetActive(true);
+	}
+	public void DisplayCoach(){
+		HideAllViews ();
+		Coach.SetActive(true);
+	}
+	public void DisplayLog(){
+		HideAllViews ();
+		Log.SetActive(true);
+	}
+	public void DisplayLeader(){
+		HideAllViews ();
+		Leader.SetActive(true);
+	}
+	/*
+	public void HideSettings(){
+		Settings.SetActive(false);
+		TopBar.SetActive (true);
+	}*/
 	public void DisplaySelectTeamView(){
 		HideAllViews ();
-		Background.SetActive(true);
+//		Background.SetActive(true);
 		SelectTeamView.SetActive (true);
 	}
 	public void DisplayRowSoloConfig(){
 		HideAllViews ();
-		Background.SetActive(true);
+//		Background.SetActive(true);
 		print ("DisplayRowSoloConfig" + RowSoloConfigView);
 		RowSoloConfigView.SetActive (true);
 	}
 	public void DisplayRowRivalConfig(){
 		HideAllViews ();
-		Background.SetActive(true);
+//		Background.SetActive(true);
 		RowRivalConfigView.SetActive (true);
 	}
 	public void DisplayRowTeamConfig(){
 		HideAllViews ();
-		Background.SetActive(true);
+//		Background.SetActive(true);
 		RowTeamConfigView.SetActive (true);
 	}
 	public void DisplayFBLogingView(){
@@ -92,13 +137,12 @@ public class CanvasController : MonoBehaviour {
 	}
 	public void DisplayCreateWOGView(){
 		HideAllViews ();
-		Background.SetActive(true);
+//		Background.SetActive(true);
 		CreateWOGView.SetActive (true);
 	}
 	public void DisplayMainMenuView(){
 		HideAllViews ();
-		Background.SetActive(true);
-		// Check if its the first time logging in.
+//		Background.SetActive(true);
 
 		MainMenuView.SetActive (true);
 	}
