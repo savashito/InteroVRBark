@@ -138,7 +138,7 @@ public class InteroServerConnection : MonoBehaviour {
 		// is it the first time in?
 		if (configHUD.setRower (rower)) {
 			// show configuration page
-			canvasController.DisplaySelectTeamView();
+			canvasController.DisplayInitialSetup();
 
 		} else {
 			// show main menu

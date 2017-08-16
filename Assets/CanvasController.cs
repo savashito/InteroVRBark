@@ -111,11 +111,12 @@ public class CanvasController : MonoBehaviour {
 		Settings.SetActive(false);
 		TopBar.SetActive (true);
 	}*/
+	/*
 	public void DisplaySelectTeamView(){
 		HideAllViews ();
 //		Background.SetActive(true);
 		SelectTeamView.SetActive (true);
-	}
+	}*/
 	public void DisplayRowSoloConfig(){
 		HideAllViews ();
 //		Background.SetActive(true);
@@ -141,6 +142,9 @@ public class CanvasController : MonoBehaviour {
 		HideAllViews ();
 //		Background.SetActive(true);
 		CreateWOGView.SetActive (true);
+	}
+	public void DisplayInitialSetup(){
+		InitialSetupView.SetActive(true);
 	}
 	public void DisplayMainMenuView(){
 		HideAllViews ();
