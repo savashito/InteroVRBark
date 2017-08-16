@@ -7,6 +7,7 @@ public class CanvasController : MonoBehaviour {
 
 	GameObject TopBar;
 
+	GameObject InitialSetupView;
 	GameObject SelectTeamView;
 	GameObject FBLogingView;
 	GameObject MainMenuView;
@@ -29,6 +30,7 @@ public class CanvasController : MonoBehaviour {
 
 	GameObject canvas;
 	void Start(){
+		InitialSetupView = transform.Find ("InitialSetup").gameObject;
 		TopBar  = transform.Find ("TopBar").gameObject;
 		SelectTeamView = transform.Find ("SelectTeam").gameObject;
 		FBLogingView = transform.Find ("FBLoging").gameObject;
@@ -143,7 +145,8 @@ public class CanvasController : MonoBehaviour {
 	public void DisplayMainMenuView(){
 		HideAllViews ();
 //		Background.SetActive(true);
-
+		InitialSetupView.SetActive(false);
+		TopBar.SetActive (true);
 		MainMenuView.SetActive (true);
 	}
 	public void SetRower(JSONObject jRower){
