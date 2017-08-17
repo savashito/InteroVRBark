@@ -62,7 +62,7 @@ public class FBController : MonoBehaviour {
 			Debug.Log (res.Error);
 
 		} else {
-			UserName.text = "hello " + res.ResultDictionary ["first_name"];
+			UserName.text =  ""+ res.ResultDictionary ["first_name"];
 			/*
 			foreach (KeyValuePair<string, object> item in res.ResultDictionary)
 			{
