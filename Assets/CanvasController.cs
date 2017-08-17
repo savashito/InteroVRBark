@@ -32,7 +32,7 @@ public class CanvasController : MonoBehaviour {
 	void Start(){
 		InitialSetupView = transform.Find ("InitialSetup").gameObject;
 		TopBar  = transform.Find ("TopBar").gameObject;
-		SelectTeamView = transform.Find ("SelectTeam").gameObject;
+//		SelectTeamView = transform.Find ("SelectTeam").gameObject;
 		FBLogingView = transform.Find ("FBLoging").gameObject;
 		CreateWOGView = transform.Find ("CreateWOG").gameObject;
 		MainMenuView = transform.Find ("MainMenu").gameObject;
