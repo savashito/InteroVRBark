@@ -92,6 +92,7 @@ public class CanvasController : MonoBehaviour {
 	}
 	public void DisplaySettings(){
 		SideMenu.SetActive (false);
+//		HideAllViews ();
 		Settings.SetActive(true);
 //		TopBar.SetActive (false);
 	}
