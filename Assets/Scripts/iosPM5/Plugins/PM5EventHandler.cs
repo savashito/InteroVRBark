@@ -81,8 +81,13 @@ public class PM5EventHandler {
 	public static float getStrokeCount(){
 		return StrokeCount;
 	}
+	public static void requestBLEAccess (){
+		
+	}
 	#else
 
+	[DllImport ("__Internal")]
+	public static extern void requestBLEAccess ();
 
 	[DllImport ("__Internal")]
 	public static extern void connectToPM5 (int channel);

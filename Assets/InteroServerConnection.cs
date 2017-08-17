@@ -132,6 +132,7 @@ public class InteroServerConnection : MonoBehaviour {
 
 	}
 	void OnloginFB(SocketIOEvent e){
+		print ("OnLogingFB");
 		SetRower (e.data);
 	}
 	void SetRower (JSONObject rower){

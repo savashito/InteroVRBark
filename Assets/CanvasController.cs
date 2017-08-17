@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Facebook.Unity;
 
 public class CanvasController : MonoBehaviour {
 
 	GameObject TopBar;
 
 	GameObject InitialSetupView;
-	GameObject SelectTeamView;
+//	GameObject SelectTeamView;
 	GameObject FBLogingView;
 	GameObject MainMenuView;
 	GameObject CreateWOGView;
@@ -32,7 +33,7 @@ public class CanvasController : MonoBehaviour {
 	void Start(){
 		InitialSetupView = transform.Find ("InitialSetup").gameObject;
 		TopBar  = transform.Find ("TopBar").gameObject;
-		SelectTeamView = transform.Find ("SelectTeam").gameObject;
+//		SelectTeamView = transform.Find ("SelectTeam").gameObject;
 		FBLogingView = transform.Find ("FBLoging").gameObject;
 		CreateWOGView = transform.Find ("CreateWOG").gameObject;
 		MainMenuView = transform.Find ("MainMenu").gameObject;
@@ -60,11 +61,16 @@ public class CanvasController : MonoBehaviour {
 		gameObject.SetActive (false);
 //		transform.SetA
 	}
+	public void OnLogout(){
+		FB.LogOut();
+		HideAllViews ();
+		DisplayFBLogingView ();
+	} 
 	public void HideSideMenu(){
 		SideMenu.SetActive (false);
 	}
 	void HideAllViews(){
-		SelectTeamView.SetActive (false);
+//		SelectTeamView.SetActive (false);
 		FBLogingView.SetActive (false);
 		CreateWOGView.SetActive (false);
 		MainMenuView.SetActive (false);

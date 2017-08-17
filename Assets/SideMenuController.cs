@@ -15,4 +15,5 @@ public class SideMenuController : MonoBehaviour {
 		print ("OnHideSideMenuButton");
 		canvasController.HideSideMenu ();
 	}
+
 }

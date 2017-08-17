@@ -11,15 +11,15 @@ public class SelectTeamController : MonoBehaviour {
 	}
 	public void JoinRed(){
 		interoServer.JoinTeam ("red");
-		canvasController.DisplayMainMenuView ();
+		canvasController.DisplaySync ();
 	}
 	public void JoinGreen(){
 		interoServer.JoinTeam ("green");
-		canvasController.DisplayMainMenuView ();
+		canvasController.DisplaySync ();
 	}
 	public void JoinBlue(){
 		interoServer.JoinTeam ("blue");
-		canvasController.DisplayMainMenuView ();
+		canvasController.DisplaySync ();
 	}
 
 }
