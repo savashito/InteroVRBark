@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class FBController : MonoBehaviour {
 	public Image fbImage;
 	CanvasController canvasController;
+	public InteroServerConnection interoServerConnection;
 	// Use this for initialization
 	void Start(){
 		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
@@ -42,7 +43,7 @@ public class FBController : MonoBehaviour {
 		}
 	}
 	public GameObject DialogUsername;
-	public GameObject DiagLoggedIn;
+//	public GameObject DiagLoggedIn;
 //	public GameObject DiagLoggedOut;
 	void DealWithFBMenus(bool isLoggedIn){
 		if (isLoggedIn) {
@@ -54,7 +55,7 @@ public class FBController : MonoBehaviour {
 //			canvasController.DisplayFBLogingView();
 		}
 	}
-	public InteroServerConnection interoServerConnection;
+
 	void DisplayUsername(IResult res){
 		Text UserName = DialogUsername.GetComponent<Text> ();
 		if (res.Error!=null && res.Error.Length>1) {

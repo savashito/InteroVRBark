@@ -3867,7 +3867,7 @@ MonoBehaviour:
   fbImage: {fileID: 0}
   DialogUsername: {fileID: 0}
   DiagLoggedIn: {fileID: 2107513937}
-  interoServerConnection: {fileID: 0}
+  interoServerConnection: {fileID: 716543580}
 --- !u!1 &190464968
 GameObject:
   m_ObjectHideFlags: 0
