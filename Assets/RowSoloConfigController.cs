@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class RowSoloConfigController : MonoBehaviour {
 
-	CanvasController canvasController = null;
+//	CanvasController canvasController = null;
 	public RowSessionManager rowSessionManager;
 	// Use this for initialization
 	void Start () {
-		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
+//		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
 	}
 	
 	public void OnOk(){
-		canvasController.Hide ();
+//		canvasController.Hide ();
 		rowSessionManager.InitRowingSession ();
 	}
 }

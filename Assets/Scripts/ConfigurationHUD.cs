@@ -13,6 +13,7 @@ public class ConfigurationHUD : MonoBehaviour {
 //	public Toggle toggleWIFIOn;
 
 	public Toggle toggleVROn;
+	public Toggle toggleRowBackward;
 	public bool isRowingSolo;
 //	bool isHideRowerFlag;
 	public bool isOfflineGame = false;
@@ -31,8 +32,19 @@ public class ConfigurationHUD : MonoBehaviour {
 		return getPMChannel()*7;
 	}
 	public bool isHideRower(){
-		return toggleHideRower.isOn;
+		return !toggleHideRower.isOn;
 	}
+	public void setRowBackwards(bool back){
+		toggleRowBackward.isOn = back;
+	}
+	public void setVR(bool vr){
+		toggleVROn.isOn = vr;
+		toggleUltraOn.isOn = !vr;
+	}
+	public bool isRowBackwardsOn(){
+		return toggleRowBackward.isOn;
+	}
+
 	public bool isVROn(){
 		return toggleVROn.isOn;
 	}

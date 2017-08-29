@@ -7,7 +7,8 @@ public class OnBoardController : MonoBehaviour {
 	// Use this for initialization
 	void OnEnable () {
 		print ("OnBoardController.Start");
-		PM5EventHandler.requestBLEAccess ();
+		PM5EventHandler.connectToPM5 (0);
+//		PM5EventHandler.requestBLEAccess ();
 	}
 	
 	// Update is called once per frame

@@ -57,9 +57,27 @@ public class CanvasController : MonoBehaviour {
 //		Image image = gameObject.GetComponent<Image>();
 //		image.sprite = Resources.Load<Sprite> ("UIAssets\\Background1.png");
 	}
+	/*
+	public void questionsAnswered(bool hasRowedCrew,bool isVR, float cardioTime){
+		conf
+		if (isVR) {
+			// VR
+			// low definition
+		} else {
+			// high definition
+			// not VR
+		}
+
+	}*/
+
 	public void Hide(){
 		gameObject.SetActive (false);
+
 //		transform.SetA
+	}
+	public void Show(){
+		gameObject.SetActive (true);
+		DisplayMainMenuView ();
 	}
 	public void OnLogout(){
 		FB.LogOut();
@@ -71,6 +89,7 @@ public class CanvasController : MonoBehaviour {
 	}
 	void HideAllViews(){
 //		SelectTeamView.SetActive (false);
+		InitialSetupView.SetActive(false);
 		FBLogingView.SetActive (false);
 		CreateWOGView.SetActive (false);
 		MainMenuView.SetActive (false);
@@ -82,6 +101,9 @@ public class CanvasController : MonoBehaviour {
 		Log.SetActive (false);
 		Leader.SetActive (false);
 		Coach.SetActive (false);
+		RowSoloConfigView.SetActive (false);
+		RowTeamConfigView.SetActive (false);
+		RowRivalConfigView.SetActive (false);
 	}
 
 
@@ -151,6 +173,7 @@ public class CanvasController : MonoBehaviour {
 		CreateWOGView.SetActive (true);
 	}
 	public void DisplayInitialSetup(){
+		HideAllViews ();
 		InitialSetupView.SetActive(true);
 	}
 	public void DisplayMainMenuView(){

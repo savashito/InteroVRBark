@@ -75,7 +75,11 @@ public class InteroServerConnection : MonoBehaviour {
 			break;
 		case "createWOGResponse":
 //				:{"__v":1,"joinAnyTime":"true","terrain":"land","dayTime":"morning","name":"Rodrigo_1382017","team":"green","inProgress":true,"_id":"5990be26527a983809c1f1cd","rowers":[{"ready":false,"rowerId":"5990b97e527a983809c1f1cc","workoutId":"5990be26527a983809c1f1ce","_id":"5990be26527a983809c1f1cf"}
-			canvasController.Hide();
+//			canvasController.Hide ();
+			print ("createWOGResponse");
+//			throw new ArgumentNullException();
+			object m = null;
+			string s = m.ToString();
 			break;
 		}
 	}
@@ -119,7 +123,7 @@ public class InteroServerConnection : MonoBehaviour {
 				JoinWog (s);
 				print ("Join wog SUccess");
 				rowSessionManager.InitRowingSession ();
-				canvasController.Hide();
+//				canvasController.Hide();
 				//				o [0];
 			} else {
 				print ("Take to create WOG");
@@ -131,6 +135,7 @@ public class InteroServerConnection : MonoBehaviour {
 		}
 
 	}
+
 	void OnloginFB(SocketIOEvent e){
 		print ("OnLogingFB");
 		SetRower (e.data);
@@ -148,6 +153,18 @@ public class InteroServerConnection : MonoBehaviour {
 		}
 		// set socket of rower
 		socket.Emit("RowerEvent",configHUD.getRower());
+	}
+
+	public void SaveQuestions (bool hasRowedCrew,bool hasVR, float workoutTime){
+		JSONObject obj = new JSONObject();
+		JSONObject rower = configHUD.getRower ();
+		obj.AddField("workoutTime",workoutTime);
+		obj.AddField("hasRowedCrew",hasRowedCrew);
+		obj.AddField("hasVR",hasVR);
+		rower.AddField("data",obj);
+		rower.AddField("event","saveQuestions");
+		print ("SaveQuestions");
+		socket.Emit ("RowerEvent",rower);
 	}
 	/// <summary>
 	/// //////

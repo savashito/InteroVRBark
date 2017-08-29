@@ -93,15 +93,13 @@ public class PlayerController : ErgDataAbstract //: FactoryCommunication
 			alan.startStroke ();
 //			print ("startStroke");
 			alan.setRecoverySpeed (strokeData.strokeRecoveryTime);
-
 		}
+
 		if (strokeData.strokeRecoveryTime < 0.01f) {
 			// recovery started
 			alan.startRecovery();
 //			print ("startRecovery");
 			alan.setStrokeSpeed (strokeData.driveTime);
-
-
 		}
 	}
 
@@ -109,7 +107,8 @@ public class PlayerController : ErgDataAbstract //: FactoryCommunication
 		currentLocation.copy (ergData);
 
 		if (mUpdatePosition) {
-			mRigidBody.position = new Vector3 (currentLocation.mDistance, mRigidBody.position.y, mRigidBody.position.z);
+			float s = confHUD.isRowBackwardsOn() ? -1 : 1;
+			mRigidBody.position = new Vector3 (s*currentLocation.mDistance, mRigidBody.position.y, mRigidBody.position.z);
 			mUpdatePosition = false;
 		} else {
 			//			if(previousLocation.distance == currentLocation.distance)
