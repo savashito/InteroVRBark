@@ -135,6 +135,9 @@ public class InteroServerConnection : MonoBehaviour {
 		}
 
 	}
+	public  void SendCofiguration(){
+
+	}
 
 	void OnloginFB(SocketIOEvent e){
 		print ("OnLogingFB");

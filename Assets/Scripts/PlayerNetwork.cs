@@ -97,22 +97,7 @@ public class PlayerNetwork: MonoBehaviour {
 		GameObject camFree = player.transform.Find ("FloatCamera").gameObject;
 		confHUD = GameObject.Find("ConfigHandler").GetComponent<ConfigurationHUD>();
 		bool showRowerAvatar = !confHUD.isHideRower ();
-		/*
-		if (showRowerAvatar) {
-			cam1.SetActive (false);
-			cam3.SetActive (false);
-			camFree.SetActive (true);
-			player.transform.Find ("cuerpo_remero:cuerpo_Alan1").gameObject.SetActive(showRowerAvatar);
-			player.transform.Find ("Character1_Reference").gameObject.SetActive(showRowerAvatar);
-			player.transform.Find ("Character1_Ctrl_Reference").gameObject.SetActive(showRowerAvatar);
-			player.transform.Find ("remo1").gameObject.SetActive(showRowerAvatar);
-			player.transform.Find ("remo2").gameObject.SetActive(showRowerAvatar);
-		} else {
-			print ("fpv" + fpv);
-			cam1.SetActive (fpv); 
-			cam3.SetActive (!fpv);
-			camFree.SetActive (false);
-		}*/
+
 		cam1.SetActive (fpv); 
 		cam3.SetActive (!fpv);
 		camFree.SetActive (!showRowerAvatar);

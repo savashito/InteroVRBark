@@ -7,6 +7,7 @@ public class RowSessionManager : MonoBehaviour {
 	public GameObject playerPrefab;
 	CanvasController canvasController;
 	GameObject playerPool;
+	public InteroServerConnection interoServerConnection;
 	// Use this for initialization
 	void Start () {
 		confHUD = GameObject.Find("ConfigHandler").GetComponent<ConfigurationHUD>();
@@ -40,6 +41,9 @@ public class RowSessionManager : MonoBehaviour {
 		canvasController.Hide ();
 		playerPool.SetActive (true);
 		// player.GetComponent<PlayerNetwork> ().Start();
+		// send the configuration to the server
+
+		interoServerConnection.SendCofiguration ();
 	}
 
 

@@ -25,6 +25,8 @@ public class ConfigurationHUD : MonoBehaviour {
 	public ConfiguracionDoble confDoble;
 //	public bool isFPV = false;
 	private JSONObject rowerJSON = null;
+
+
 	public bool isRecenterOnStroke(){
 		return toggleRecenterOnStroke.isOn;
 	}
