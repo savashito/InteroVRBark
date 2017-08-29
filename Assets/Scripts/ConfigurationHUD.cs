@@ -10,7 +10,7 @@ public class ConfigurationHUD : MonoBehaviour {
 	public Toggle toggleRecenterOnStroke;
 	public Toggle toggleHideRower;
 	public Toggle toggleUltraOn;
-	public Toggle toggleWIFIOn;
+//	public Toggle toggleWIFIOn;
 
 	public Toggle toggleVROn;
 	public bool isRowingSolo;
@@ -39,9 +39,10 @@ public class ConfigurationHUD : MonoBehaviour {
 	public bool isUltraOn(){
 		return toggleUltraOn.isOn;
 	}
+	/*
 	public bool isWIFIOn(){
 		return toggleWIFIOn.isOn;
-	}
+	}*/
 	private int pmChannel = 0;
 	public void setPMChannel(int c){
 		pmChannel = c;
