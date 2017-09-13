@@ -91,15 +91,16 @@ public class PlayerNetwork: MonoBehaviour {
 	public PlayerNetwork InitRowingScene(bool fpv,GameObject player){
 		//		GameObject player = GameObject.Instantiate (playerPrefab);
 		Transform t = player.transform.Find ("Character1_Reference/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/CameraController/1PCamera");
-		print (t);
+		// print (t);
 		GameObject cam1 = t.gameObject;
 		GameObject cam3 = player.transform.Find ("Character1_Reference/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/CameraController/3PCamera").gameObject;
 		GameObject camFree = player.transform.Find ("FloatCamera").gameObject;
 		confHUD = GameObject.Find("ConfigHandler").GetComponent<ConfigurationHUD>();
 		bool showRowerAvatar = !confHUD.isHideRower ();
-
+		print ("showRowerAvatar "+showRowerAvatar);
 		cam1.SetActive (fpv); 
 		cam3.SetActive (!fpv);
+		print("Cam3 "+!fpv);
 		camFree.SetActive (!showRowerAvatar);
 		player.transform.Find ("cuerpo_remero:cuerpo_Alan1").gameObject.SetActive(showRowerAvatar);
 		player.transform.Find ("Character1_Reference").gameObject.SetActive(showRowerAvatar);
@@ -109,7 +110,7 @@ public class PlayerNetwork: MonoBehaviour {
 		
 		PlayerNetwork pNetwork = player.GetComponent<PlayerNetwork>(); 
 		RenderSettings.skybox = confHUD.getSkybox();
-		confHUD.isRowingSolo = fpv;
+		// confHUD.isRowingSolo = fpv;
 		ControllerPM5 pm5BLE = GameObject.Find ("BLEReceiver").GetComponent<ControllerPM5>(); 
 		// ErgDisplayController ergDisplay = player.transform.Find ("Remero_bote_iRow NET/ErgDisplay").gameObject.GetComponent<ErgDisplayController>;
 		// ControllerPM5
@@ -120,6 +121,8 @@ public class PlayerNetwork: MonoBehaviour {
 	}
 
 	// Update is called once per frame
+
+	/*
 	void Update () {
 
 		if (myGhost != null) {
@@ -127,10 +130,9 @@ public class PlayerNetwork: MonoBehaviour {
 				myGhost.SetActive (false);
 			}
 		}
+	}*/
 
-	}
 }
-
 
 
 //public void InitVR(bool fpv){

@@ -13,6 +13,6 @@ public class RowSoloConfigController : MonoBehaviour {
 	
 	public void OnOk(){
 //		canvasController.Hide ();
-		rowSessionManager.InitRowingSession ();
+		rowSessionManager.InitRowingSession (true);
 	}
 }

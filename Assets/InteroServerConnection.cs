@@ -4,7 +4,7 @@ using UnityEngine;
 using SocketIO;
 
 public class InteroServerConnection : MonoBehaviour {
-	private SocketIOComponent socket;
+	private SocketIOComponent socket = null;
 	public ConfigurationHUD configHUD = null;
 	public bool hasConnected;//{ public get; private set;}
 	public int pmChannel = 0;
@@ -13,7 +13,8 @@ public class InteroServerConnection : MonoBehaviour {
 	public RowSessionManager rowSessionManager;
 	// Use this for initialization
 	void Start () {
-		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
+//		GameObject canvas = GameObject.Find ("Canvas");
+//		canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
 		socket = GetComponentInParent<SocketIOComponent> ();
 		socket.On ("open", OnConnected);
 		socket.On ("disconnect", OnDisconnect);
@@ -21,6 +22,7 @@ public class InteroServerConnection : MonoBehaviour {
 		socket.On ("RowerStaticEvent", OnRowerStaticEvent);
 		socket.On ("WorkoutGroupStaticEvent", OnWorkoutGroupStaticEvent);
 		socket.On ("loginFB", OnloginFB);
+		socket.On ("configuration", OnConfiguration);
 
 		socket.Connect ();
 		print ("Trying to connect");
@@ -30,8 +32,8 @@ public class InteroServerConnection : MonoBehaviour {
 			configHUD = new ConfigurationHUD ();
 			configHUD.setPMChannel (pmChannel);
 		}
-
-
+//		print (canvas);
+//		print (canvasController);
 	}
 	void OnConnected(SocketIOEvent e){
 		if (hasConnected)
@@ -43,7 +45,11 @@ public class InteroServerConnection : MonoBehaviour {
 		print (pmChannel+"Disconnect");
 		hasConnected = false;
 	}
-
+	void OnConfiguration(SocketIOEvent e){
+		print ("OnConfiguration"+ e.data);
+		InteroServerPayload p = new InteroServerPayload (e.data);
+		configHUD.LoadCofiguration (p.obj);
+	}
 	void OnRowerEvent(SocketIOEvent e){
 		print ("OnRowerEvent"+ e.data);
 
@@ -51,6 +57,9 @@ public class InteroServerConnection : MonoBehaviour {
 		int lane =0;
 		InteroServerPayload p = new InteroServerPayload (e.data);
 		switch (p.ev) {
+		case "":
+			
+			break;
 		case "logWorkoutEntryResponse":
 			/*
 			JSONObject o = e.data;
@@ -69,7 +78,7 @@ public class InteroServerConnection : MonoBehaviour {
 			o.GetField (ref lane, "lane");
 			//			JSONObject payload = o.GetField("data");
 			ErgData erg = ErgData.From(p.obj);
-			erg.i = lane;
+			 erg.i = lane;
 			print ("Placebo" + erg);
 			testBLE.OnErgData (erg);
 			break;
@@ -77,6 +86,7 @@ public class InteroServerConnection : MonoBehaviour {
 //				:{"__v":1,"joinAnyTime":"true","terrain":"land","dayTime":"morning","name":"Rodrigo_1382017","team":"green","inProgress":true,"_id":"5990be26527a983809c1f1cd","rowers":[{"ready":false,"rowerId":"5990b97e527a983809c1f1cc","workoutId":"5990be26527a983809c1f1ce","_id":"5990be26527a983809c1f1cf"}
 //			canvasController.Hide ();
 			print ("createWOGResponse");
+			SendCofiguration ();
 //			throw new ArgumentNullException();
 			object m = null;
 			string s = m.ToString();
@@ -116,40 +126,46 @@ public class InteroServerConnection : MonoBehaviour {
 		case "listWorkoutsResponse":
 			print ("listWorkoutsResponse " + p.obj);
 			if (p.obj.Count > 0) {
-				print ("joing WOG");
+//				print ("joing WOG");
 				JSONObject wog = p.obj [0];
+
 				string s="";
 				wog.GetField (ref s,"_id");
-				JoinWog (s);
-				print ("Join wog SUccess");
-				rowSessionManager.InitRowingSession ();
+				//JoinWog (s);
+
+
+				rowSessionManager.InitRowingSession (s);
 //				canvasController.Hide();
 				//				o [0];
-			} else {
+			} /*else {
 				print ("Take to create WOG");
 				canvasController.DisplayCreateWOGView ();
-			}
+			}*/
 
 			break;
 
 		}
 
 	}
-	public  void SendCofiguration(){
-
-	}
 
 	void OnloginFB(SocketIOEvent e){
 		print ("OnLogingFB");
 		SetRower (e.data);
+		// check if the user is in anyworkout
+		GetCurrentWorkouts();
 	}
-	void SetRower (JSONObject rower){
+	public void SetRower (JSONObject rower){
+//		if(canvasController==null)
+//			canvasController = GameObject.Find ("Canvas").GetComponent<CanvasController> ();
 		// is it the first time in?
 		if (configHUD.setRower (rower)) {
+			print("show init menu");
 			// show configuration page
 			canvasController.DisplayInitialSetup();
 
 		} else {
+			print("show main menu "+canvasController);
+			print (canvasController);
 			// show main menu
 			canvasController.SetRower(configHUD.getRower());
 			canvasController.DisplayMainMenuView();
@@ -169,6 +185,48 @@ public class InteroServerConnection : MonoBehaviour {
 		print ("SaveQuestions");
 		socket.Emit ("RowerEvent",rower);
 	}
+	public  void SendCofiguration(){
+		JSONObject obj = new JSONObject();
+		JSONObject rower = configHUD.getRower ();
+//		obj.AddField("name",buttonName);
+//		obj.AddField("text",buttonText);
+		rower.AddField("data",configHUD.getJSON());
+		rower.AddField("event","configuration");
+		print ("SendCofiguration");
+		socket.Emit ("RowerEvent",rower);
+	}
+	public void Send(string ev,string data){
+		JSONObject obj = new JSONObject();
+		JSONObject rower = configHUD.getRower ();
+		obj.AddField("data",data);
+		obj.AddField("event",ev);
+		rower.AddField("data",obj);
+		rower.AddField("event","unityEvent");
+		print ("Send "+ev);
+		if(socket!=null)
+			socket.Emit ("RowerEvent",rower);
+	}
+
+	public void SendEndWOG(){
+		JSONObject obj = new JSONObject();
+		JSONObject rower = configHUD.getRower ();
+//		endWOG
+		rower.AddField("event","endWOG");
+		print ("endWOG");
+		socket.Emit ("RowerEvent",rower);
+
+	}
+
+	public void SendButtonClick(string buttonName,string buttonText){
+		JSONObject obj = new JSONObject();
+		JSONObject rower = configHUD.getRower ();
+		obj.AddField("name",buttonName);
+		obj.AddField("text",buttonText);
+		rower.AddField("data",obj);
+		rower.AddField("event","buttonCliked");
+		print ("SendButtonClick");
+		socket.Emit ("RowerEvent",rower);
+	}
 	/// <summary>
 	/// //////
 	/// 
@@ -179,23 +237,53 @@ public class InteroServerConnection : MonoBehaviour {
 	public void GetTeamWorkouts(){
 		JSONObject obj = new JSONObject();
 		//		obj.AddField("data",configHUD.getRower ());
-		obj.AddField("data",configHUD.getRower ());
+		JSONObject queryWOG = new JSONObject();
+//		JSONObject rowerJSON = configHUD.getRower ();
+		queryWOG.AddField("privateWOG",false);
+		queryWOG.AddField("inProgress",true);
+		queryWOG.AddField("team",configHUD.getTeam());
+		obj.AddField("data",queryWOG);
 		obj.AddField("event","listWorkouts");
 		print ("GetTeamWorkouts");
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
+	}
+	public void GetCurrentWorkouts(){
+		JSONObject obj = new JSONObject();
+		JSONObject rowerJSON = configHUD.getRower ();
+		JSONObject queryWOG = new JSONObject();
+		queryWOG.AddField("inProgress",true);
+		//		obj.AddField("data",configHUD.getRower ());
+		string id = "";
+		rowerJSON.GetField(ref id,"rowerId");
+		queryWOG.AddField("rowerId",id);
+		//		queryWOG.
+		obj.AddField("data",queryWOG);
+		obj.AddField("event","listWorkouts");
+		print ("GetCurrentWorkouts");
+		socket.Emit ("WorkoutGroupStaticEvent",obj);
+		// update side menu
+		canvasController.UpdateSideMenuHud(rowerJSON);
 	}
 	public void GetRivalWorkouts(){
 		JSONObject obj = new JSONObject();
 		JSONObject teamJSON = new JSONObject();
 		string team = configHUD.getTeam ();
+		teamJSON.AddField("inProgress",true);
 		teamJSON.AddField("notteam",team);
 //		string rivalTeam = "red";
 		obj.AddField("data",teamJSON);
 		obj.AddField("event","listWorkouts");
-		print ("GetRivalWorkouts");
+		print ("GetRivalWorkouts "+team);
 		socket.Emit ("WorkoutGroupStaticEvent",obj);
 	}
-
+	public void EndWorkout(){
+		JSONObject obj = new JSONObject();
+		//		obj.AddField("data",configHUD.getRower ());
+		obj.AddField("data",configHUD.getRower ());
+		obj.AddField("event","listWorkouts");
+		print ("GetTeamWorkouts");
+		socket.Emit ("WorkoutGroupStaticEvent",obj);
+	}
 	public void CreateTeamWorkouts(WOGModel wogModel){
 		socket.Emit("RowerEvent",wogModel.ToJSONEvent(configHUD.getRower()));
 	}
@@ -203,7 +291,9 @@ public class InteroServerConnection : MonoBehaviour {
 
 
 	public void SendErgData(ErgData e){
-		socket.Emit("RowerEvent",e.ToJSONEvent(configHUD.getRower()));
+		JSONObject rower=configHUD.getRower();
+		if(rower!=null)
+		socket.Emit("RowerEvent",e.ToJSONEvent(rower));
 	}
 	public void JoinWog(string wogId){
 		print ("JoinWog");

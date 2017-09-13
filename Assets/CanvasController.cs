@@ -106,7 +106,13 @@ public class CanvasController : MonoBehaviour {
 		RowRivalConfigView.SetActive (false);
 	}
 
-
+	public void UpdateSideMenuHud(JSONObject rowerJSON){
+		string namei="", teami="", ptsi="0 pts";
+		print ("UpdateSideMenuHud");
+		rowerJSON.GetField(ref teami,"team");
+		rowerJSON.GetField(ref namei,"name");
+		SideMenu.GetComponent<SideMenuController>().UpdateMenuHUD (namei,teami,ptsi);
+	}
 	public void DisplaySideMenu(){
 //		HideAllViews ();
 //		TopBar.SetActive(false);
@@ -177,11 +183,13 @@ public class CanvasController : MonoBehaviour {
 		InitialSetupView.SetActive(true);
 	}
 	public void DisplayMainMenuView(){
+		print ("DisplayMainMenuView");
 		HideAllViews ();
 //		Background.SetActive(true);
 		InitialSetupView.SetActive(false);
 		TopBar.SetActive (true);
 		MainMenuView.SetActive (true);
+		print ("DisplayMainMenuViewEnd");
 	}
 	public void SetRower(JSONObject jRower){
 

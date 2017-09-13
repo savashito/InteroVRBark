@@ -1912,7 +1912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1263852068766898
 GameObject:
   m_ObjectHideFlags: 1
@@ -5153,7 +5153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1854701813117368
 GameObject:
   m_ObjectHideFlags: 1
@@ -13002,6 +13002,7 @@ MonoBehaviour:
   myGhost: {fileID: 1976145960362736}
   myPlayer: {fileID: 1314672271390274}
   camController: {fileID: 114992705180472478}
+  vrController: {fileID: 0}
 --- !u!114 &114683946588942552
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -49,11 +49,13 @@ public class ConfiguracionDoble : MonoBehaviour {
 		rango3.setRange (21.0f,28f);
 	}
 	public RangoSPM[] getRangeArray(){
-
+		print("getRangeArray Star");
 
 		ranges [0] = new RangoSPM (0,rango1.readEndRange(),rango1.readRangeSPM());
 		ranges [1] = new RangoSPM (rango1.readEndRange(),rango2.readEndRange(),rango2.readRangeSPM());
 		ranges [2] = new RangoSPM (rango2.readEndRange(),rango3.readEndRange(),rango3.readRangeSPM());
+		print("getRangeArray End");
+		print(ranges [0].ToString()+"");
 		return ranges;
 	}
 	public float getSPMFrom (ErgData ergData){

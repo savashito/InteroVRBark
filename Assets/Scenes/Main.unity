@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -33176,8 +33176,8 @@ MonoBehaviour:
   toggleRecenterOnStroke: {fileID: 1751961909}
   toggleHideRower: {fileID: 1176796442}
   toggleUltraOn: {fileID: 732452240}
-  toggleWIFIOn: {fileID: 0}
   toggleVROn: {fileID: 1907794561}
+  toggleRowBackward: {fileID: 0}
   isRowingSolo: 0
   isOfflineGame: 0
   dropdownEnviroment: {fileID: 0}
@@ -33326,6 +33326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0ddea9937194cd992e5c6d32090f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasController: {fileID: 0}
+  name: {fileID: 0}
+  team: {fileID: 0}
+  pts: {fileID: 0}
 --- !u!1 &1346565171
 GameObject:
   m_ObjectHideFlags: 0
@@ -36043,10 +36047,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161775c5f89814f81bf227e2637be960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interoServer: {fileID: 0}
   toggleRowCrew: {fileID: 1252153981}
   toggleVRHeadset: {fileID: 768897969}
   sliderCardio: {fileID: 1370018864}
   textSlider: {fileID: 96686469}
+  confHUD: {fileID: 0}
 --- !u!1 &1505379358
 GameObject:
   m_ObjectHideFlags: 0

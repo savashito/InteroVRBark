@@ -15,8 +15,8 @@ public class TestBLE : MonoBehaviour {
 		controllerPM5 = GameObject.Find("BLEReceiver").GetComponent<ControllerPM5>();
 		/*InvokeRepeating("callStroke", 0.0f, 3.0f);
 		InvokeRepeating("callRecovery", 1.0f, 3.0f);
-		InvokeRepeating("UpdateT", 0.0f, 0.10f);
 */
+		// InvokeRepeating("UpdateT", 0.0f, 0.10f);
 	}
 
 
@@ -82,19 +82,18 @@ public class TestBLE : MonoBehaviour {
 			controllerPM5.onStrokeDataReady ("bark");
 		}
 	}
-	/*
-	// Update is called once per frame
 	void UpdateT () {
 		PM5EventHandler.Distance += 0.1f; 
 		//print (PM5EventHandler.Distance);
 		PM5EventHandler.Time = Time.fixedTime;
 		PM5EventHandler.SPM = 25;
 		controllerPM5.onErgDataReady ("Meow");
-
-
 		PM5EventHandler.StrokeRecoveryTime = 2.0f;
 
 	}
+	/*
+	// Update is called once per frame
+
 	// function is called every second
 	void callStroke(){
 		PM5EventHandler.DriveTime = 1.0f;

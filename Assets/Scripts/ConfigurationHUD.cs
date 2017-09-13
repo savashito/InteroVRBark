@@ -74,12 +74,16 @@ public class ConfigurationHUD : MonoBehaviour {
 	// returns true if the rower was newly created.
 	// False if the rower already existed
 	public bool setRower(JSONObject jObj){
-		string id="",team ="";
+		string id="",team ="",name="";
 		rowerJSON = new JSONObject();
+		JSONObject config = jObj.GetField ("lastConfiguration");
+		LoadCofiguration (config);
 		jObj.GetField(ref id,"_id");
+		jObj.GetField(ref name,"name");
 		jObj.GetField(ref team,"team");
 		print ("setRower " + id);
 		rowerJSON.AddField("rowerId",id);
+		rowerJSON.AddField("name",name);
 		rowerJSON.AddField("lane",getPMChannel());
 		rowerJSON.AddField("team",team);
 		return (team.Length<3);
@@ -88,15 +92,61 @@ public class ConfigurationHUD : MonoBehaviour {
 		string team="";
 		rowerJSON.GetField(ref team,"team");
 		return team;
+
+	}
+	public JSONObject getJSON(){
+		JSONObject obj = new JSONObject();
+		obj.AddField("toggleRecenterOnStroke",toggleRecenterOnStroke.isOn);
+		obj.AddField("toggleHideRower",toggleHideRower.isOn);
+		obj.AddField("toggleUltraOn",toggleUltraOn.isOn);
+		obj.AddField("toggleVROn",toggleVROn.isOn);
+		obj.AddField("toggleRowBackward",toggleRowBackward.isOn);
+		obj.AddField("isRowingSolo",isRowingSolo);
+		obj.AddField("dropdownEnviroment",dropdownEnviroment.value);
+		obj.AddField("dropdownTimeOfDay",dropdownTimeOfDay.value);
+		return obj;
+	}
+
+
+	public  void LoadCofiguration(JSONObject data){
+		print ("LoadCofiguration" );
+		print (data);
+		if (data == null)
+			return;
+		bool btoggleRecenterOnStroke = false;
+		bool btoggleHideRower = false;
+		bool btoggleUltraOn = false;
+		bool btoggleVROn = false;
+		bool btoggleRowBackward = false;
+		int bdropdownEnviroment = 0;
+		int bdropdownTimeOfDay = 0;
+
+		data.GetField(ref btoggleRecenterOnStroke, "toggleRecenterOnStroke");
+		data.GetField(ref btoggleHideRower, "toggleHideRower");
+		data.GetField(ref btoggleUltraOn, "toggleUltraOn");
+		data.GetField(ref btoggleVROn, "toggleVROn");
+		data.GetField(ref btoggleRowBackward, "toggleRowBackward");
+		data.GetField(ref isRowingSolo, "isRowingSolo");
+		data.GetField(ref bdropdownEnviroment, "dropdownEnviroment");
+		data.GetField(ref bdropdownTimeOfDay, "dropdownTimeOfDay");
+
+		toggleRecenterOnStroke.isOn = btoggleRecenterOnStroke;
+		toggleHideRower.isOn = btoggleHideRower;
+		toggleUltraOn.isOn = btoggleUltraOn;
+		toggleVROn.isOn = btoggleVROn;
+		toggleRowBackward.isOn = btoggleRowBackward;
+		dropdownEnviroment.value = bdropdownEnviroment;
+		dropdownTimeOfDay.value = bdropdownTimeOfDay;
 	}
 	public JSONObject getRower(){
 		// if null, send test obj
+		/*
 		if (rowerJSON == null) {
 			JSONObject obj = new JSONObject();
 //			obj.AddField("team","blue");
 //			obj.AddField("stupid","sexy");
 			return obj;
-		}
+		}*/
 		return rowerJSON;
 		//		Dictionary<string,string> dic = new Dictionary<string,string> ();obj.rowerId
 //		dic.Add ("rowerId",));

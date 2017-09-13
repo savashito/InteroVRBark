@@ -11,7 +11,7 @@ public class AlanRowing : MonoBehaviour {
 	private Transform referencia1, referencia2;
 	private bool bajoAgua;
 	private GameObject mySplash1, mySplash2, myPSsplash1, myPSsplash2;
-	private GameObject miBote;
+//	private GameObject miBote;
 	private int oldBote;
 	private float currentSPM = -10.0f;
 
@@ -29,11 +29,12 @@ public class AlanRowing : MonoBehaviour {
 		bajoAgua = false;
 
 		oldBote = 0;
-
+		/*
 		miBote=Instantiate(botes[0]);
 		miBote.transform.parent = this.gameObject.transform;
 		miBote.transform.localPosition = new Vector3 (0, 0, 0);
-		miBote.transform.localRotation = Quaternion.Euler (new Vector3 (0, 0, 0));
+		miBote.transform.localRotation = Quaternion.Euler (new Vector3 (0, 0, 0));*/
+
 	}
 	/*
 	void CambiarBote(){

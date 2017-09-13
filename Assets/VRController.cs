@@ -2,25 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR;
+using UnityEngine.UI;
 
 public class VRController : MonoBehaviour {
 //	public Canvas canvas;
 	public CanvasController canvasController;
 	public RowSessionManager rowSessionManager;
+	public InteroServerConnection interoServerConnection;
 	void Start(){
 		//		LoadVR ();
 		// Set Portrait
 		Screen.orientation = ScreenOrientation.Portrait;
+		// add callbacks to buttons, sliders, etc
+		GameObject canvas = GameObject.Find("Canvas");
+
+		Button[] btns = canvas.GetComponentsInChildren<Button> (true);
+		Slider[] sliders = canvas.GetComponentsInChildren<Slider> (true);
+		Dropdown[] dropdowns = canvas.GetComponentsInChildren<Dropdown> (true);
+		print ("Button Start events");
+		/*
+		foreach (Slider s in sliders) {
+			slider
+		}*/
+		/*
+		foreach (Button button in btns) {
+			string s = "";
+			Text t = button.GetComponentInChildren<Text> ();
+			if (t != null) {
+//				print (button.gameObject.name);
+//				print (t.text);
+				s = t.text;
+			}
+			button.onClick.AddListener(delegate() { interoServerConnection.SendButtonClick(button.gameObject.name,s); });
+		}*/
+		print ("Button End events");
 	}
+	/*
+	void  OnApplicationFocus(bool hasFocus){
+		print ("OnApplicationFocus()");
+		interoServerConnection.Send ("OnApplicationFocus", ""+hasFocus);
+	}
+	void  OnApplicationPause(bool pause){
+		print ("OnApplicationPause()");
+		interoServerConnection.Send ("OnApplicationPause", ""+pause);
+	}
+	void  OnApplicationQuit(){
+		print ("OnApplicationQuit()");
+		interoServerConnection.Send ("OnApplicationQuit", "");
+	}
+	*/
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			// Android close icon or back button tapped.
 			// Application.Quit();
 			VROFF();
 			canvasController.Show ();
+			// send event exit
 			rowSessionManager.EndRowingSession ();
 
 		}
+	}
+	void OnMouseDown ()
+	{
+		print ("OnMOuseDown");
 	}
 	public void Recenter(){
 		GvrCardboardHelpers.Recenter();

@@ -10,12 +10,13 @@ public class CreateWOGController : MonoBehaviour {
 	}
 	
 	WOGModel getCreateWOGModel(){
-		WOGModel cWOGModel = new WOGModel (true,"land","morning");
+		WOGModel cWOGModel = new WOGModel (true,"land","morning",false);
 
 		return cWOGModel;
 	}
-	public void OnOk(){
+	public void CreateWOG(bool pWOG){
 		WOGModel cWOGModel = getCreateWOGModel ();
+		cWOGModel.privateWOG = pWOG;
 		interoServer.CreateTeamWorkouts (cWOGModel);
 	}
 }
@@ -23,10 +24,12 @@ public class CreateWOGController : MonoBehaviour {
 public class WOGModel
 {
 	bool joinAnyTime;
+	public bool privateWOG;
 	string terrain;
 	string dayTime;
-	public WOGModel(bool j, string t, string d){
+	public WOGModel(bool j, string t, string d,bool pWog){
 		joinAnyTime = j;
+		privateWOG = pWog;
 		terrain = t;
 		dayTime = d;
 	}
@@ -39,6 +42,7 @@ public class WOGModel
 	public JSONObject ToJSON(){
 		JSONObject obj = new JSONObject();
 		obj.AddField("joinAnyTime",joinAnyTime);
+		obj.AddField("privateWOG",privateWOG);
 		obj.AddField("terrain",terrain);
 		obj.AddField("dayTime",dayTime);
 		return obj;

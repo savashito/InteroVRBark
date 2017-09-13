@@ -219,12 +219,12 @@ GameObject:
   - component: {fileID: 33718762075219032}
   - component: {fileID: 23999821059574560}
   m_Layer: 0
-  m_Name: polySurface9
+  m_Name: liraEstribor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1068960573996342
 GameObject:
   m_ObjectHideFlags: 1
@@ -1898,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1602456483878862
 GameObject:
   m_ObjectHideFlags: 1
@@ -1940,12 +1940,12 @@ GameObject:
   - component: {fileID: 33296416475223014}
   - component: {fileID: 23083343727306732}
   m_Layer: 0
-  m_Name: polySurface17
+  m_Name: LiraBabor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1637924814214388
 GameObject:
   m_ObjectHideFlags: 1
@@ -2757,7 +2757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4005222104759266
 Transform:
   m_ObjectHideFlags: 1

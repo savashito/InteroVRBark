@@ -15,12 +15,14 @@ public class MainMenuController : MonoBehaviour {
 //		interoServer
 		// otherwise, take me to choose enviroment screen
 		interoServer.GetTeamWorkouts();
+		canvasController.DisplayCreateWOGView ();
 	}
 
 	public void RivalRow(){
 		// check to see if there are any people rowing in general and make me row with them
 		interoServer.GetRivalWorkouts();
 		// otherwise, take me to choose enviroment screen
+		canvasController.DisplayCreateWOGView ();
 	}
 
 	public void SoloRow(){

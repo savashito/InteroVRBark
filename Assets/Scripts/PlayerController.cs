@@ -233,12 +233,7 @@ public class PlayerController : ErgDataAbstract //: FactoryCommunication
 		//		print("z");
 	}
 
-	public void  OnApplicationFocus(){
-		print ("OnApplicationFocus()");
-//		mUpdatePosition = true;
-//		mRigidBody.position = new Vector3 (currentLocation.mDistance, mRigidBody.position.y, mRigidBody.position.z);
 
-	}
 	/*
 	public void setLocation(Location location){
 		if (previousLocation == null){

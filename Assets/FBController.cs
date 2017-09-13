@@ -24,6 +24,26 @@ public class FBController : MonoBehaviour {
 		}*/
 		DealWithFBMenus (FB.IsLoggedIn);
 	}
+	public void TestLogin1(){
+		interoServerConnection.LoginUser ("10156192670307119", "Rodrigo");
+	}
+	public void TestLoginNoInternet(){
+//		interoServerConnection.LoginUser ("10156192670307119", "Rodrigo");
+		string id="",team ="",name="";
+		JSONObject rowerJSON = new JSONObject();
+//		JSONObject config = jObj.GetField ("lastConfiguration");
+//		LoadCofiguration (config);
+//		jObj.GetField(ref id,"_id");
+//		jObj.GetField(ref name,"name");
+//		jObj.GetField(ref team,"team");
+		print ("setRower " + id);
+		rowerJSON.AddField("_id","1223");
+		rowerJSON.AddField("name","Rodrigo");
+		rowerJSON.AddField("lane",0);
+		rowerJSON.AddField("team","red");
+		interoServerConnection.SetRower (rowerJSON);
+//		return (team.Length<3);
+	}
 	void OnHideUnity(bool isGameShow){
 		if (!isGameShow) {
 			Time.timeScale = 0;

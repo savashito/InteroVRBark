@@ -21,11 +21,12 @@ public class TestInteroServerBex : MonoBehaviour {
 			TestLogin ();
 //			SendDumyErgData ();
 //			SendDumyErgData ();
-			InvokeRepeating("SendDumyErgData", 0, 1.0f);
+			// InvokeRepeating("SendDumyErgData", 0, 1.0f);
 		}
 	}
 	void TestLogin(){
-		interoServer.LoginUser ("90156192670307119", "Becca");
+		interoServer.LoginUser ("59b1580a73d6e93bec54e340", "Becca");
+
 	}
 
 	ErgData ergData = new ErgData(5,10,22,200,120);
